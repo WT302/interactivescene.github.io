@@ -16,6 +16,7 @@ function setup() {
 }
 
 function draw() {
+  mousePressed();
   // Change background based on currentBack
   if (currentBack == 0) {
     background(135, 206, 235); // blue sky
@@ -37,6 +38,7 @@ function draw() {
   fill(0);
   textSize(16);
   text("By Tony", 10, height - 10);
+  
 }
 
 function movement() {
