@@ -16,7 +16,7 @@ function setup() {
 }
 
 function draw() {
-  mousePressed();
+  
   // Change background based on currentBack
   if (currentBack == 0) {
     background(135, 206, 235); // blue sky
@@ -57,7 +57,8 @@ function mouseMoved() {
 }
 
 function mousePressed() {
-  if (mouseButton === CENTER) {
+  print(mouseButton);
+  if (mouseButton.center) {
     currentBack = (currentBack + 1) % 4;
   }
 }
