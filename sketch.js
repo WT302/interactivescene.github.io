@@ -7,11 +7,11 @@
 
 let x = 200, y = 200; // position
 let currentBack = 0;  // background state
-let size = 70;        // size of protagonist
+let size = 200;        // size of protagonist
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  size = 50; // initial size
+  size = 200; // initial size
 }
 
 function draw() {
@@ -28,8 +28,10 @@ function draw() {
   }
   //mountains
   
-  fill(153, 153, 153);
-  ellipse(250,height-30,2500,700);
+  fill(144, 238, 144);
+  ellipse(150,height-30,1500,700);
+  fill(144, 238, 144);
+  ellipse(1000,height-30,2500,700);
   //green ground
   fill(38, 153, 0);
   rect(0, height-70, width, 80);
@@ -86,6 +88,6 @@ function mousePressed() {
 
 function keyPressed(){
   if (key == 'r' || key == 'R'){
-   currentBack == 0;
+    currentBack = 0;
   }
 }
