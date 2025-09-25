@@ -51,7 +51,7 @@ function draw() {
  
 
   movement();
-  keyPressed();
+  
 
   // Draw protagonist with dynamic size
   fill(255, 150, 0);
