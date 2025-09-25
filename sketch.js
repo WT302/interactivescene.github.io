@@ -1,14 +1,13 @@
-// Project Title
-// Your Name
-// Date
+// Interactive Scene
+// Tony
+// sep 23
 //
-// Extra for Experts:
-// - describe what you did to take this project "above and beyond"
+//
 
 
 let x = 200, y = 200; // position
 let currentBack = 0;  // background state
-let size = 50;        // size of protagonist
+let size = 70;        // size of protagonist
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -27,8 +26,30 @@ function draw() {
   } else {
     background(25, 25, 112);   // night
   }
+  //mountains
+  
+  fill(153, 153, 153);
+  ellipse(250,height-30,2500,700);
+  //green ground
+  fill(38, 153, 0);
+  rect(0, height-70, width, 80);
+  //tree
+  fill(38,153, 0);
+  triangle(30, 1000, 58, 600, 100, 1000);
+  fill(38,153, 0);
+  triangle(530, 1000, 558, 600, 600, 1000);
+  fill(38,153, 0);
+  triangle(1030, 1000, 1058, 600, 1100, 1000);
+  fill(38,153, 0);
+  triangle(1530, 1000, 1558, 600, 1600, 1000);
+   //sun
+   fill(255, 255, 0);
+   ellipse(120,100,200,200);
+ 
+ 
 
   movement();
+  keyPressed();
 
   // Draw protagonist with dynamic size
   fill(255, 150, 0);
@@ -60,5 +81,11 @@ function mousePressed() {
   print(mouseButton);
   if (mouseButton.center) {
     currentBack = (currentBack + 1) % 4;
+  }
+}
+
+function keyPressed(){
+  if (key == 'r' || key == 'R'){
+   currentBack == 0;
   }
 }
