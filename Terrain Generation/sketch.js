@@ -54,3 +54,9 @@ function drawFlag(x, y) {
   fill(0);
   triangle(x, y - 20, x + 15, y - 15, x, y - 10); // Flag
 }
+//average line
+function drawAverage(){
+  if (terrainHeights.length === 0) return;
+
+  let sum = 0;
+}
