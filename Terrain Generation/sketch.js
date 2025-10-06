@@ -16,6 +16,7 @@ function setup() {
 function draw() {
   background(255);     
   generateTerrain();      // Generate terrain and draw bars
+  drawAverage();
   start += 0.01;          // Animate terrain by shifting noise
 }
 
@@ -54,9 +55,25 @@ function drawFlag(x, y) {
   fill(0);
   triangle(x, y - 20, x + 15, y - 15, x, y - 10); // Flag
 }
-//average line
+
+//Draw average Line
 function drawAverage(){
   if (terrainHeights.length === 0) return;
-
   let sum = 0;
+  for(let h of terrainHeights){
+    sum += h;
+  }
+  let  avg = sum/terrainHeights.length;
+  stroke(0, 0, 255); //line
+  line(0, height - avg, width, height - avg);
+  noStroke();
+}
+
+// Keyboard interaction
+function keyPressed(){
+  if (keyCode === RIGHT_ARROW){
+    rectWidth = max(2, rectWidth + 2);//increase width
+  }else if (keyCode === LEFT_ARROW){
+    rectWidth = max(2, rectWidth - 2);//decrease width
+  }
 }
