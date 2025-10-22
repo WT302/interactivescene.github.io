@@ -19,7 +19,7 @@ function draw() {
 function drawRoad(){
   noStroke();
   rect(0, windowHeight/4, windowWidth, 500);
-  for(let x = 0; x < windowWidth; x =+ 100){
+  for(let x = 0; x < windowWidth; x += 100){
     fill(255,255,255);
     rect(x,windowHeight/2, 70, 10);
   }
