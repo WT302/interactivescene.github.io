@@ -45,9 +45,21 @@ class Vehicle {
     }
     else{
       rect(this.x, this.y, 60, 25); // truck
-    }
-
-    
+    } 
   } 
+
+  //move
+  move(){
+    this.x == this.xSpeed;
+    //other side
+    if(this.x > width) this.x = -60;
+    if(this.x < -60) this.x = width;
+  }
+
+  //speed up
+  speedUp(){
+    if(this.xSpeed < 10 && this.direction === 1)this.xSpeed += 0.2;
+    if(this.xSpeed > -10 && this.direction === 0)this.xSpeed -= 0.2;
+  }
 }
 
