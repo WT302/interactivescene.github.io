@@ -8,12 +8,14 @@
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  testCar = new Vehicle(0, color(255,0,0),100, 150,1,2); 
 }
 
 function draw() {
   background(220);
   fill(80,80,80);
   drawRoad();
+  testCar.display();
 }
 
 function drawRoad(){
@@ -24,3 +26,28 @@ function drawRoad(){
     rect(x,windowHeight/2, 70, 10);
   }
 }
+
+class Vehicle {
+  constructor(type, col, x, y, direction, xSpeed){
+    this.type = type;  // 0 = car, 1 = truck
+    this.col = col; //color
+    this.x = x; //x position
+    this.y = y; //y position
+    this.direction = direction; // 0 = left, 1 = right
+    this.xSpeed = xSpeed; // speed
+  }
+  
+  display(){
+    fill(this.col);
+    noStroke();
+    if (this.type === 0){
+      rect(this.x, this.y, 40, 20); // car
+    }
+    else{
+      rect(this.x, this.y, 60, 25); // truck
+    }
+
+    
+  } 
+}
+
