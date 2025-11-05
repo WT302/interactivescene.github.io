@@ -6,7 +6,6 @@
 // 
 let eastbound = [];
 let westbound = [];
-
 function setup() {
   createCanvas(windowWidth, windowHeight);
   // testCar = new Vehicle(0, color(255,0,0),100, 150,1,2); 
