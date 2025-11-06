@@ -10,34 +10,15 @@ let westbound = [];
 function setup() {
   createCanvas(windowWidth, windowHeight);
 
-  // eastbound
+ // eastbound 
   for (let i = 0; i < 15; i++) {
-    eastbound.push(
-      new Vehicle(
-        0,
-        color(random(255), random(255), random(255)),
-        random(width),
-        windowHeight / 2 + 100,
-        1,
-        random(2, 5)
-      )
-    );
+    eastbound.push(new Vehicle( 0,color(random(255), random(255), random(255)),random(width),windowHeight / 2 + random(80, 130),1,random(2, 5)));                                         
   }
 
-  // westbound
+  // westbound 
   for (let i = 0; i < 15; i++) {
-    westbound.push(
-      new Vehicle(
-        1,
-        color(random(255), random(255), random(255)),
-        random(width),
-        windowHeight / 2 - 100,
-        0,
-        random(-5, -2)
-      )
-    );
+    westbound.push(new Vehicle(1,color(random(255), random(255), random(255)),random(width),windowHeight / 2 - random(80, 130),  0,random(-5, -2) ));                                                       
   }
-
 }
 
 function draw() {
