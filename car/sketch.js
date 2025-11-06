@@ -54,31 +54,13 @@ function drawRoad() {
 function mousePressed() {
   // Shift + click  westbound
   if (keyIsDown(SHIFT)) {
-    westbound.push(
-      new Vehicle(
-        1,
-        color(random(255), random(255), random(255)),
-        mouseX,
-        windowHeight / 2 - 100,
-        0,
-        random(-5, -2)
-      )
-    );
-  } else {
+    westbound.push(new Vehicle(1,color(random(255), random(255), random(255)),mouseX,windowHeight / 2 - 100,0,random(-5, -2)));                                                   
+  } 
+  else {
     // Normal click eastbound
-    eastbound.push(
-      new Vehicle(
-        0,
-        color(random(255), random(255), random(255)),
-        mouseX,
-        windowHeight / 2 + 100,
-        1,
-        random(2, 5)
-      )
-    );
+    eastbound.push(new Vehicle(0,color(random(255), random(255), random(255)),mouseX,windowHeight / 2 + 100, 1, random(2, 5)));                                                    
   }
 }
-
 
 // Vehicle Class
 class Vehicle {
