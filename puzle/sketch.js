@@ -88,7 +88,9 @@ function checkWin(){
   let first = grid[0][0];
   for(let y = 0; y < rows; y++){
     for(let x= 0; x < cols; x++){
-      if(grid[y][x]!==first) return false;
+      if(grid[y][x]!==first) 
+      return false;
     }
   }
+  return true;
 }
