@@ -118,10 +118,11 @@ function randomizeGrid(){
 
 function checkWin(){
   let first = grid[0][0];
-  for(let y = 0; y < rows; y++){
-    for(let x= 0; x < cols; x++){
-      if(grid[y][x]!==first) 
-      return false;
+  for (let y = 0; y < rows; y++){
+    for (let x = 0; x < cols; x++){
+      if (grid[y][x] != first){
+        return false;
+      }
     }
   }
   return true;
@@ -133,18 +134,39 @@ function drawOverlay(){
   let y = getCurrentY();
   fill(100, 100, 255, 150);
   noStroke();
-  if(Pattern === 'cross'){
+  if(Pattern === "cross"){
     hightlightSquare(x, y);
     hightlightSquare(x-1, y);
     hightlightSquare(x+1, y);
     hightlightSquare(x, y-1);
     hightlightSquare(x, y+1);
   }
-  else if(Pattern === 'square'){
+  else if(Pattern === "square"){
     for(let j = -1; j <=1; j++){
       for(let i = -1; i <= 1; i++){
-        hightlightSquare(x+i, y+j);
+        highlightSquare(x+i, y+j);
       }
     }
+  }
+}
+
+function highlightSquare(x, y){
+  if (x >= 0 && x < cols && y >= 0 && y < rows){
+    square(x * squareSize, y * squareSize, squareSize);
+  }
+}
+
+// key controls 
+function keyPressed(){
+  // space change pattern cross / square
+  if (key === ' ') {
+    if (pattern === "cross") pattern = "square";
+    else pattern = "cross";
+  }
+
+  // reset 
+  if (key === 'r' || key === 'R') {
+    randomizeGrid();
+    showWin = false;
   }
 }
