@@ -16,7 +16,7 @@ let rows = grid.length;
 let cols = grid[0].length;
 let squareSize = 60;
 let showWin = false;
-let Pattern = "cross";
+let pattern = "cross";  
 
 function setup() {
   createCanvas(cols*squareSize, rows*squareSize);
@@ -32,7 +32,7 @@ function draw() {
     textSize(32);
     fill(0, 255, 0);
     textAlign(CENTER, CENTER);
-    text("you Win", width / 2, height/2);
+    text("You Win", width / 2, height/2);
   }
 }
 
@@ -106,6 +106,7 @@ function renderGrid(){
     }
   }
 }
+
 //-------My own code
 //random board
 function randomizeGrid(){
@@ -134,14 +135,14 @@ function drawOverlay(){
   let y = getCurrentY();
   fill(100, 100, 255, 150);
   noStroke();
-  if(Pattern === "cross"){
-    hightlightSquare(x, y);
-    hightlightSquare(x-1, y);
-    hightlightSquare(x+1, y);
-    hightlightSquare(x, y-1);
-    hightlightSquare(x, y+1);
+  if(pattern === "cross"){                 
+    highlightSquare(x, y);               
+    highlightSquare(x-1, y);
+    highlightSquare(x+1, y);
+    highlightSquare(x, y-1);
+    highlightSquare(x, y+1);
   }
-  else if(Pattern === "square"){
+  else if(pattern === "square"){           
     for(let j = -1; j <=1; j++){
       for(let i = -1; i <= 1; i++){
         highlightSquare(x+i, y+j);
