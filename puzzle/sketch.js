@@ -16,35 +16,65 @@ let rows = grid.length;
 let cols = grid[0].length;
 let squareSize = 60;
 let showWin = false;
-let Pattern = 'cross';
+let Pattern = "cross";
 
 function setup() {
   createCanvas(cols*squareSize, rows*squareSize);
-  randomizeGrid();
+  randomizeGrid(); // random
 }
 
 function draw() {
   background(220);
   renderGrid();
   drawOverlay();
+
+  if(showWin){
+    textSize(32);
+    fill(0, 255, 0);
+    textAlign(CENTER, CENTER);
+    text("you Win", width / 2, height/2);
+  }
 }
 
 function mousePressed(){
-  //flip current tile
-  //upgrade: only do this if the mouse is on Canvas
-  
+  if (mouseX < 0 || mouseX >= width || mouseY < 0 || mouseY >= height) {
+    return;
+  }
+
+  // flip current tile
   let x = getCurrentX();
   let y = getCurrentY();
 
-  //ALWAYS: flip the "focused" tile
-  flip(x,y);
+  // cheater
+  if (keyIsDown(SHIFT)) {
+    flip(x, y);
+  } else {
+    // normal click
+    if (pattern === "cross") {
+      // cross pattern 
+      flip(x, y);                          // center 
+      if (x + 1 < cols) flip(x + 1, y);    // right 
+      if (x - 1 >= 0)   flip(x - 1, y);    // left 
+      if (y + 1 < rows) flip(x, y + 1);    // down
+      if (y - 1 >= 0)   flip(x, y - 1);    // up 
+    } else if (pattern === "square") {
+      // square 
+      for (let j = -1; j <= 1; j++) {
+        for (let i = -1; i <= 1; i++) {
+          let nx = x + i;
+          let ny = y + j;
+          if (nx >= 0 && nx < cols && ny >= 0 && ny < rows) {
+            flip(nx, ny);
+          }
+        }
+      }
+    }
+  }
 
-  //IF THEY EXIST:
-  //flip our NSEW neighbours (cross pattern)
-  if(x+1 < cols) flip(x+1,y);
-  if(y-1 >= 0) flip(x, y-1);
-
+  // check win 
+  showWin = checkWin();
 }
+
 
 function getCurrentX(){
   //determine current col of mouse position
