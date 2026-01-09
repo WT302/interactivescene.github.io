@@ -1,0 +1,75 @@
+[gd_scene load_steps=6 format=3 uid="uid://o4kllo0bydd6"]
+
+[ext_resource type="Texture2D" uid="uid://bex85od30nmwo" path="res://ForestBackground.png" id="1_drhme"]
+[ext_resource type="PackedScene" uid="uid://dy5hebk5iq3ql" path="res://character/player.tscn" id="2_guiot"]
+[ext_resource type="PackedScene" uid="uid://cs42xdavkfhob" path="res://slime/slime.tscn" id="3_ppd22"]
+[ext_resource type="Script" uid="uid://bu58l2r5oj3my" path="res://slime/slime.gd" id="4_3cebx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_guiot"]
+normal = Vector2(0, 1)
+distance = -2.0
+
+[node name="Node2D" type="Node2D"]
+y_sort_enabled = true
+
+[node name="background 1" type="Sprite2D" parent="."]
+position = Vector2(-120, 0)
+texture = ExtResource("1_drhme")
+metadata/_edit_lock_ = true
+
+[node name="background 2" type="Sprite2D" parent="."]
+position = Vector2(120, 0)
+texture = ExtResource("1_drhme")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.41, 2.41)
+metadata/_edit_lock_ = true
+
+[node name="slime" parent="." instance=ExtResource("3_ppd22")]
+position = Vector2(209, 74)
+script = ExtResource("4_3cebx")
+
+[node name="player" parent="." instance=ExtResource("2_guiot")]
+position = Vector2(-139, 79)
+
+[node name="air wall" type="Node2D" parent="."]
+position = Vector2(0, 133)
+rotation = -3.1415925
+
+[node name="StaticBody2D" type="StaticBody2D" parent="air wall"]
+position = Vector2(1.16272295e-05, 133)
+rotation = 3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="air wall/StaticBody2D"]
+position = Vector2(0, 133)
+rotation = 3.1415927
+shape = SubResource("WorldBoundaryShape2D_guiot")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="air wall"]
+position = Vector2(1.16272295e-05, 133)
+rotation = 3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="air wall/StaticBody2D2"]
+position = Vector2(238, 0)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_guiot")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="air wall"]
+position = Vector2(1.16272295e-05, 133)
+rotation = 3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="air wall/StaticBody2D3"]
+position = Vector2(0, 34)
+shape = SubResource("WorldBoundaryShape2D_guiot")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="air wall"]
+position = Vector2(235.00003, 259.99997)
+rotation = 3.1415925
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="air wall/StaticBody2D4"]
+position = Vector2(0, 128)
+rotation = 4.712389
+shape = SubResource("WorldBoundaryShape2D_guiot")
+
+[connection signal="body_entered" from="slime" to="slime" method="_on_body_entered"]
