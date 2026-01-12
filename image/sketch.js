@@ -6,11 +6,16 @@
 // 
 
 let myImage;
-async function setup() {
+function setup() {
+  createCanvas(601, 602); 
+  loadAssets();
   pixelDensity(1);
-  myImage = await loadImage("A/chip.jpg");// choose one Image
+} 
+async function loadAssets() {
 
-  createCanvas(myImage.width, myImage.height);
+  myImage = await loadImage("A/chip.jpg");// choose one Image
+  pilot.hide();
+
 }
 
 function draw(){
