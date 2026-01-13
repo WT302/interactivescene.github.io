@@ -57,7 +57,7 @@ function majorityColor(){
   }
 }
 
-function posterize5(){
+function posterize5(){//nuit.jpg
   for(let x = 0; x < width; x++){
     for(let y = 0; y < height; y++){
       let avg = getAvg(x,y);
@@ -81,6 +81,18 @@ function posterize5(){
     }
   }
 }
+
+function removeGreenRight(){//race.jpg
+  for(let x = 0; x < width; x++){
+    for(let y = 0; y < height; y++){
+      if(x >= width/2){
+        let index = (y*width+x)*4;
+        pixels[index + 1]= 0;
+      }
+    }
+  }
+}
+
 function getAvg(x,y){//return the avg intensity of pixel(x,y)
   let i = (width * y + x) * 4; 
   let r = pixels[i];
