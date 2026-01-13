@@ -24,8 +24,8 @@ function draw(){
   loadPixels();
 
   majorityColor();//chip.jpg
-  // //removeGreenRight(); race.jpg
-  // //posterize5();  nuit.jpg
+  //removeGreenRight(); //race.jpg      //chose one ONLY
+  //posterize5();  nuit.jpg
   // mirrorFromRight(); hand.jpg
 
   updatePixels();
@@ -93,6 +93,25 @@ function removeGreenRight(){//race.jpg
   }
 }
 
+function mirrorFromRight(){//hand.jpg
+  for(let x = width/2; x < width; x++){
+    for(let y = 0; y < height; y++){
+      //right side
+      let srcIndex = (y * width + x) * 4;
+      let r = pixels[srcIndex];
+      let g = pixels[srcIndex + 1];
+      let b = pixels[srcIndex + 2];
+      //mirrored X
+      let mirrorX = width - x - 1;
+      let dstIndex = (y*width+mirrorX)*4;
+
+      pixels[dstIndex] = r;
+      pixels[dstIndex + 1] = g;
+      pixels[dstIndex + 2] = b;
+    }
+  }
+    
+}
 function getAvg(x,y){//return the avg intensity of pixel(x,y)
   let i = (width * y + x) * 4; 
   let r = pixels[i];
