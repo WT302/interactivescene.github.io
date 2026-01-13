@@ -57,6 +57,30 @@ function majorityColor(){
   }
 }
 
+function posterize5(){
+  for(let x = 0; x < width; x++){
+    for(let y = 0; y < height; y++){
+      let avg = getAvg(x,y);
+      let r, g, b;
+      if(avg >= 205){
+        r = 170; g = 230; b = 220;
+      }
+      else if (avg >=155){
+        r = 255; g = 150; b = 210;
+      }
+      else if(avg >= 105){
+        r = 120; g = 180; b =60;
+      }
+      else if(avg >= 55){
+        r = 130; g = 30; b = 130;
+      }
+      else{
+        r = 90; g = 10; b = 50;
+      }
+      setPixel(x,y,r,g,b);
+    }
+  }
+}
 function getAvg(x,y){//return the avg intensity of pixel(x,y)
   let i = (width * y + x) * 4; 
   let r = pixels[i];
