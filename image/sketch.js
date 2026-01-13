@@ -13,8 +13,7 @@ function setup() {
 } 
 async function loadAssets() {
 
-  myImage = await loadImage("A/chip.jpg");// choose one Image
-  pilot.hide();
+  myImage = await loadImage("A/hand.jpg");// choose one Image
 
 }
 
@@ -23,10 +22,10 @@ function draw(){
   image(myImage, 0, 0);
   loadPixels();
 
-  majorityColor();//chip.jpg
+  //majorityColor();//chip.jpg
   //removeGreenRight(); //race.jpg      //chose one ONLY
-  //posterize5();  nuit.jpg
-  // mirrorFromRight(); hand.jpg
+  //posterize5();  //nuit.jpg
+  mirrorFromRight(); //hand.jpg
 
   updatePixels();
 }
