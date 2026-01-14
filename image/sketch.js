@@ -93,7 +93,7 @@ function removeGreenRight(){//race.jpg
 }
 
 function mirrorFromRight(){//hand.jpg
-  for(let x = width/2; x < width; x++){
+  for(let x = floor(width/2); x < width; x++){
     for(let y = 0; y < height; y++){
       //right side
       let srcIndex = (y * width + x) * 4;
@@ -102,15 +102,15 @@ function mirrorFromRight(){//hand.jpg
       let b = pixels[srcIndex + 2];
       //mirrored X
       let mirrorX = width - x - 1;
-      let dstIndex = (y*width+mirrorX)*4;
+      let dstIndex = (width * y + mirrorX)*4;
 
       pixels[dstIndex] = r;
       pixels[dstIndex + 1] = g;
       pixels[dstIndex + 2] = b;
     }
-  }
-    
+  }   
 }
+
 function getAvg(x,y){//return the avg intensity of pixel(x,y)
   let i = (width * y + x) * 4; 
   let r = pixels[i];
