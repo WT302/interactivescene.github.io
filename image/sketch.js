@@ -30,7 +30,7 @@ function draw(){
   updatePixels();
 }
  
-function majorityColor(){
+function majorityColor(){//chip.jpg
   for(let i = 0; i < pixels.length; i += 4){
     let r = pixels[i];
     let g = pixels[i+1];
